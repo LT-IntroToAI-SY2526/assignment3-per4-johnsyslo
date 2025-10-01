@@ -15,11 +15,11 @@ This assignment completes our movie chatbot system by implementing action functi
 ## Reflection Questions
 
 1. What are some key programming concepts or techniques that you learned while completing this assignment?
-
+While completing the assignment, I learned how to pattern match with the inputted data to complete the movie chatbot. A key concept I learned was tuples and how to use them and continued practiced using pattern matching with `_` and `%` to capture variable data inputted from the user. I also learned about NoneType errors and that in this case it was important to always return something so that the code would work...I ran into a few of those at first.
 
 
 2. How does the overall movie chatbot system work? Explain the flow from when a user types a query to when they receive an answer.
-
+The movie chatbot takes input from the user (well the asserts) in a normal query and processes it by correcting the text and then matching key words. It then goes through pa_list and it finds matches then calls the desired function and searches the `movie_db` for what data is needed. If it finds no results the bot responds with "No answers" and if no pattern matches it returns "I don't understand."
 
 
 3. What are some real-world applications where this type of pattern-matching chatbot system could be useful? How might you extend or improve this system for practical use?
