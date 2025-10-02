@@ -204,6 +204,13 @@ def title_by_actor(matches: List[str]) -> List[str]:
             result.append(get_title(movie))
     return result
 
+# here is the new action
+def earliest_movie(matches: List[str]) -> List[str]:
+    if not movie_db:
+        return []
+    min_year = min(get_year(m) for m in movie_db)
+    return [get_title(m) for m in movie_db if get_year(m) == min_year]
+
 
 # dummy argument is ignored and doesn't matter
 def bye_action(dummy: List[str]) -> None:
@@ -225,6 +232,8 @@ pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (str.split("who acted in %"), actors_by_title),
     (str.split("when was % made"), year_by_title),
     (str.split("in what movies did % appear"), title_by_actor),
+    #pa list
+    (str.split("what was the earliest movie"), earliest_movie),
     (["bye"], bye_action),
 ]
 
@@ -290,7 +299,7 @@ if __name__ == "__main__":
     ), "failed title_before_year test"
     assert isinstance(title_after_year(["1990"]), list), "title_after_year not returning a list"
     assert sorted(title_after_year(["1990"])) == sorted(
-        ["boyz n the hood", "dead again", "the crying game", "flirting", "malcolm x"]
+        ["boyz n the hood", "dead again", "the crying game", "flirting", "malcolm x", "toy story"]
     ), "failed title_after_year test"
     assert isinstance(director_by_title(["jaws"]), list), "director_by_title not returning a list"
     assert sorted(director_by_title(["jaws"])) == sorted(
@@ -328,5 +337,12 @@ if __name__ == "__main__":
     assert sorted(
         search_pa_list(["what", "movies", "were", "made", "in", "2020"])
     ) == sorted(["No answers"]), "failed search_pa_list test 3"
+    # here is my pa_list search
+    assert sorted(search_pa_list(["what", "was", "the", "earliest", "movie"])) == ["metropolis"], "failed earliest_movie test"
+    assert isinstance(earliest_movie([]), list), "earliest_movie not returning a list"
+    # here is the test
+    assert sorted(earliest_movie([])) == sorted(
+        ["metropolis"]
+    ), "failed earliest_movie test"
 
     print("All tests passed!")

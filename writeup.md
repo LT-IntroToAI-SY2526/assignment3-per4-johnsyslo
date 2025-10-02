@@ -23,3 +23,4 @@ The movie chatbot takes input from the user (well the asserts) in a normal query
 
 
 3. What are some real-world applications where this type of pattern-matching chatbot system could be useful? How might you extend or improve this system for practical use?
+Some areas where this type of pattern matching could be used is in customer support bots, such as the ones you can find on Chase or Amazon and for Help systems such as IT support for basic problems. The old Siri is also an example as it matched specific patterns to your voice to complete basic actions. To extend it you could add more words for a single thing, synonoms, so that it can support a more variety of phrases.
